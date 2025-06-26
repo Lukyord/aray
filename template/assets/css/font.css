@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "URWClassico";
+    src: url("../font/URWClassico/URWClassico-Reg.eot");
+    src: url("../font/URWClassico/URWClassico-Reg.eot?#iefix")
+            format("embedded-opentype"),
+        url("../font/URWClassico/URWClassico-Reg.woff2") format("woff2"),
+        url("../font/URWClassico/URWClassico-Reg.woff") format("woff"),
+        url("../font/URWClassico/URWClassico-Reg.ttf") format("truetype"),
+        url("../font/URWClassico/URWClassico-Reg.svg#URWClassico-Reg")
+            format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
