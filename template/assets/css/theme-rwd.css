@@ -113,6 +113,11 @@
         --spacing-container: var(--spacing-2sm);
     }
 
+    .size-pc-h2-mb-h1 {
+        font-size: var(--font-size-h1) !important;
+        line-height: var(--line-height-h1);
+    }
+
     .swiper-nav.bracket [class*="swiper-button-"]:before {
         content: none;
     }

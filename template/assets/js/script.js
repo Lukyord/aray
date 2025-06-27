@@ -108,6 +108,10 @@ jQuery(document).ready(function () {
     onWindowResize(handleCursorFeature);
 });
 
+$.easing.easeOutQuadCustom = function (x) {
+    return 1 - (1 - x) * (1 - x);
+};
+
 /*::* PROJECT VIEW *::*/
 jQuery(document).ready(function () {
     $("[data-section='list-item-template']").each(function () {
@@ -142,7 +146,7 @@ jQuery(document).ready(function () {
 
                 let currentItemIndex = 1;
                 let autoScrollTimer = null;
-                const AUTO_SCROLL_DELAY = 4000;
+                const AUTO_SCROLL_DELAY = 8000;
                 let checkInterval = null;
                 let scrollTimeout = null;
                 let isUserScrolling = false;
@@ -173,13 +177,45 @@ jQuery(document).ready(function () {
                                     .outerHeight(true);
                             }
 
-                            projectScroll.animate(
-                                {
-                                    scrollTop: scrollTop,
-                                },
-                                800,
-                                "easeInOutQuart"
+                            //disable scroll snap on project-scroll-item
+                            $(".project-scroll-item").css(
+                                "scroll-snap-align",
+                                "none"
                             );
+                            projectScroll.css("scroll-snap-type", "none");
+                            projectScroll.css("scroll-behavior", "auto");
+
+                            setTimeout(function () {
+                                console.log(
+                                    "Starting animation to scrollTop:",
+                                    scrollTop
+                                );
+                                projectScroll.animate(
+                                    {
+                                        scrollTop: scrollTop,
+                                    },
+                                    4000,
+                                    "easeOutQuadCustom",
+                                    function () {
+                                        console.log("Animation completed");
+
+                                        setTimeout(function () {
+                                            $(".project-scroll-item").css(
+                                                "scroll-snap-align",
+                                                "start"
+                                            );
+                                            projectScroll.css(
+                                                "scroll-snap-type",
+                                                "y mandatory"
+                                            );
+                                            projectScroll.css(
+                                                "scroll-behavior",
+                                                "smooth"
+                                            );
+                                        }, 200);
+                                    }
+                                );
+                            }, 100);
                         }
                     }, AUTO_SCROLL_DELAY);
                 }
@@ -283,5 +319,151 @@ jQuery(document).ready(function () {
                 });
             }
         });
+    });
+});
+
+/*::* TIMELINE *::*/
+jQuery(document).ready(function ($) {
+    // Function to initialize marker tracking
+    function initMarkerTracking(options = {}) {
+        const { sectionSelector, markerSelector, cardSelector } = options;
+
+        if (!$(sectionSelector).length) return;
+
+        const $markerItems = $(markerSelector);
+        const $timelineSection = $(sectionSelector);
+        const $cards = $(cardSelector);
+        let scrollTimeout = null;
+
+        function findClosestToCenter() {
+            const viewportCenter = window.innerHeight / 2;
+            let closestItem = null;
+            let closestDistance = Infinity;
+
+            $cards.each(function () {
+                const $item = $(this);
+                const rect = this.getBoundingClientRect();
+                const itemCenter = rect.top + rect.height / 2;
+                const distance = Math.abs(itemCenter - viewportCenter);
+
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestItem = $item;
+                }
+            });
+
+            return closestItem;
+        }
+
+        function updateActiveStates() {
+            const $closestItem = findClosestToCenter();
+
+            if ($closestItem && $closestItem.length) {
+                const cardId = $closestItem.attr("id");
+                const $marker = $(`${markerSelector}[data-marker="${cardId}"]`);
+
+                // Update marker active state
+                $markerItems.removeClass("active");
+                $marker.addClass("active");
+
+                // Update timeline item active state
+                $cards.removeClass("active");
+                $closestItem.addClass("active");
+            }
+        }
+
+        function handleScroll() {
+            if (scrollTimeout) {
+                clearTimeout(scrollTimeout);
+            }
+
+            scrollTimeout = setTimeout(updateActiveStates, 10);
+        }
+
+        $timelineSection.on("scroll", handleScroll);
+
+        $(window).on("scroll", handleScroll);
+
+        updateActiveStates();
+
+        $markerItems.on("click", function () {
+            const marker = $(this);
+            const cardId = marker.data("marker");
+            const timelineItem = $(`#${cardId}`);
+
+            if (timelineItem.length) {
+                // Calculate scroll position to center the targeted element
+                let scrollTop = 0;
+                const allItems = $(cardSelector);
+                const targetIndex = allItems.index(timelineItem);
+                const containerHeight = $timelineSection.height();
+                const targetItemHeight = timelineItem.outerHeight(true);
+
+                // Calculate the top position of the target item
+                for (let i = 0; i < targetIndex; i++) {
+                    scrollTop += allItems.eq(i).outerHeight(true);
+                }
+
+                // Adjust scroll position to center the target item
+                const centerOffset = (containerHeight - targetItemHeight) / 2;
+                scrollTop = Math.max(0, scrollTop - centerOffset);
+
+                // Disable scroll snap temporarily
+                $(cardSelector).css("scroll-snap-align", "none");
+                $timelineSection.css("scroll-snap-type", "none");
+                $timelineSection.css("scroll-behavior", "auto");
+
+                setTimeout(function () {
+                    $timelineSection.animate(
+                        {
+                            scrollTop: scrollTop,
+                        },
+                        2000,
+                        "easeOutQuadCustom",
+                        function () {
+                            console.log("Timeline animation completed");
+
+                            setTimeout(function () {
+                                $(cardSelector).css(
+                                    "scroll-snap-align",
+                                    "center"
+                                );
+                                $timelineSection.css(
+                                    "scroll-snap-type",
+                                    "y mandatory"
+                                );
+                                $timelineSection.css(
+                                    "scroll-behavior",
+                                    "smooth"
+                                );
+                            }, 50);
+                        }
+                    );
+                }, 50);
+            }
+        });
+    }
+
+    initMarkerTracking({
+        sectionSelector: '[data-section="timeline"] .timeline',
+        markerSelector: ".timeline-marker",
+        cardSelector: ".timeline-item",
+    });
+});
+
+/*::*  SKIP CURRENT SECTION *::*/
+jQuery(document).ready(function ($) {
+    const skipButton = $(".skip-section");
+
+    skipButton.on("click", function () {
+        const currentSection = $(this).closest("[data-section]");
+        const nextSection = currentSection.next("[data-section]");
+
+        if (nextSection.length) {
+            window.scrollTo({
+                top: nextSection.offset().top,
+                behavior: "smooth",
+            });
+        }
     });
 });

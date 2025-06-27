@@ -65,37 +65,157 @@
     </section>
 
     <?php
-    $timeline = []
+    //template 1-4
+
+    $timeline_title = "How We Became ARAY";
+    $timeline = [
+        [
+            "title" => "1999",
+            "subtitle" => "Founded as I.E. Design Co., Ltd.",
+            "content" => "
+            <ul class='wp-block-list'>
+                <li>Founded as I.E. Design Co., Ltd. by Phennapa Puangchan (Mom)</li>
+                <li>Established the first office in Rewadee, Nonthaburi, with a small workshop</li>
+                <li>Provided a comprehensive range of services, including interior design, wood furniture, curtains, fabrics, aluminum work, turnkey installations, and consultancy</li>
+                <li>Worked on diverse projects, including residential properties, hotels, retail shops, shophouses, condominiums, hospitals, educational institutions, and government offices</li>
+            </ul>            
+            ",
+            "media" => [
+                "template" => "1",
+                "items" => [
+                    [
+                        "src" => "./assets/media/design/timeline-1-1.jpg",
+                        "title" => "Phennapa Puangchan",
+                        "subtitle" => "Founder and Director"
+                    ],
+                    [
+                        "src" => "./assets/media/design/timeline-1-2.jpg",
+                    ]
+                ]
+            ]
+
+        ],
+        [
+            "title" => "2012",
+            "subtitle" => "Expanded operations",
+            "content" => "
+            <ul class='wp-block-list'>
+                <li>Relocated the head office and built a larger workshop at the current location: 8/10-11 Moo 5, Tb. Tha It, Pak Kret District, Nonthaburi 11120</li>
+                <li>Expanded operations, taking on larger-scale hotel projects</li>
+            </ul>
+            ",
+            "media" => [
+                "template" => "3",
+                "items" => [
+                    [
+                        "src" => "./assets/media/design/timeline-2-1.jpg",
+                    ]
+                ]
+            ]
+
+        ],
+        [
+            "title" => "2017",
+            "subtitle" => "Growing to Meet Demand",
+            "content" => "
+            <p>
+                Further expanded the workshop in a nearby location
+                <br>to accommodate growing project demands
+            </p>
+            ",
+            "media" => [
+                "template" => "4",
+                "items" => [
+                    [
+                        "src" => "./assets/media/design/timeline-3-1.jpg",
+                    ],
+                    [
+                        "src" => "./assets/media/design/timeline-3-2.jpg",
+                    ],
+                    [
+                        "src" => "./assets/media/design/timeline-3-3.jpg",
+                    ]
+                ]
+            ]
+
+        ],
+        [
+            "title" => "2018",
+            "subtitle" => "Foundations in Architecture",
+            "content" => "
+            <ul class='wp-block-list'>
+                <li>Naphit (Eyes) Puangchan graduated from the Faculty of Architecture at Chulalongkorn University</li>
+            </ul>
+            ",
+            "media" => [
+                "template" => "2",
+                "items" => [
+                    [
+                        "src" => "./assets/media/design/timeline-4-1.jpg",
+                    ],
+                    [
+                        "src" => "./assets/media/design/timeline-4-2.jpg",
+                        "title" => "Naphit Puangchan",
+                    ]
+                ]
+            ]
+
+        ],
+        [
+            "title" => "2018-2021",
+            "subtitle" => "Expanding Experience",
+            "content" => "
+            <ul class='wp-block-list'>
+                <li>Worked at Bjarke Ingels Group (BIG) in Copenhagen, gaining international experience in innovative architecture and design</li>
+            </ul>
+            ",
+            "media" => [
+                "template" => "4",
+                "items" => [
+                    [
+                        "src" => "./assets/media/design/timeline-5-1.jpg",
+                    ],
+                    [
+                        "src" => "./assets/media/design/timeline-5-2.jpg",
+                    ],
+                ]
+            ]
+
+        ],
+        [
+            "title" => "2021",
+            "subtitle" => "Back to Roots, Forward in Vision",
+            "content" => "
+            <ul class='wp-block-list'>
+                <li>Returned to Thailand and began the transition of inheriting the family firm with a vision to evolve its design identity</li>
+            </ul>
+            ",
+        ],
+        [
+            "title" => "2022",
+            "subtitle" => "ARAY, Expanding the Vision",
+            "content" => "
+            <ul class='wp-block-list'>
+                <li>Rebranded to ARAY (Aray Builds Co., Ltd.), led by Naphit (Eyes) Puangchan, honoring her mother's legacy while introducing her own design philosophy</li>
+                <li>The name ARAY reflects both the thoughtful arrangement of objects and the uplifting feelings inspired by rays of light</li>
+                <li>ARAY upholds a philosophy of blending distinctive design with quality craftsmanship, delivering a one-stop service with warmth and dedication</li>
+                <li>Committed to creating spaces that embody aspiration, balance, and excellence in customer service</li>
+            </ul>
+            ",
+            "media" => [
+                "template" => "3",
+                "items" => [
+                    [
+                        "src" => "./assets/media/design/timeline-7-1.jpg",
+                    ]
+                ]
+            ]
+        ],
+    ];
+
+    include("include/sc-timeline.php");
     ?>
-    <section data-section="timeline">
-        <div class="sc-billboard full-screen">
-            <div class="container">
-                <div class="content">
-                    <div class="markers">
-                        <div class="sc-inner">
-                            <div class="sc-header">
-                                <div class="block-content-start center-mb">
-                                    <div class="block-ttl">
-                                        <h2 class="size-h2 uppercase">Our People</h2>
-                                    </div>
-                                </div>
 
-                                <div class="markers-list">
-
-                                </div>
-                            </div>
-
-                            <a href="javascript:;" class="button skip-section show-sm">
-                                Skip This Part
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="timeline"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section data-section="content-template-3">
         <div class="sc-inner sc-inner--bottom-extra">
