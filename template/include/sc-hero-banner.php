@@ -12,13 +12,13 @@
             <div class="block-header animate fadeInUp">
                 <?php if (isset($banner["title"])) { ?>
                     <div class="block-ttl">
-                        <h3 class="size-h1 uppercase"><?php echo $banner["title"]; ?></h3>
+                        <h1 class="size-h1 uppercase"><?php echo $banner["title"]; ?></h1>
                     </div>
                 <?php } ?>
 
-                <?php if (isset($banner["location"]) && isset($banner["date"])) { ?>
+                <?php if (isset($banner["subtitle"]) && isset($banner["date"])) { ?>
                     <div class="block-subttl">
-                        <p class="block-location size-tagline uppercase"><?php echo $banner["location"]; ?></p>
+                        <p class="size-tagline uppercase"><?php echo $banner["subtitle"]; ?></p>
                         <span class="divider"></span>
                         <p class="block-date size-tagline uppercase"><?php echo $banner["date"]; ?></p>
                     </div>

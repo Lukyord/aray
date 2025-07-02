@@ -68,6 +68,8 @@
     //template 1-4
 
     $timeline_title = "How We Became ARAY";
+    $timeline_mb_line_marker = true;
+    $timeline_mb_slide_nav = true;
     $timeline = [
         [
             "title" => "1999",
@@ -119,8 +121,7 @@
             "subtitle" => "Growing to Meet Demand",
             "content" => "
             <p>
-                Further expanded the workshop in a nearby location
-                <br>to accommodate growing project demands
+                Further expanded the workshop in a nearby location to accommodate growing project demands
             </p>
             ",
             "media" => [

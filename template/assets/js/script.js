@@ -1,7 +1,7 @@
 /*::* CURSOR *::*/
 jQuery(document).ready(function () {
     const cursor = $(".cursor");
-    const clickable = $(".clickable, .button");
+    const clickable = $(".clickable, .button, .accordion > .entry-title");
     const darkBgSection = $('[data-bg-color="dark"], .on-dark-bg');
 
     let targetX = 0;
@@ -11,6 +11,23 @@ jQuery(document).ready(function () {
     cursor.hide();
 
     function enableCursorInteractions() {
+        function checkInitialCursorPosition() {
+            const initialX = targetX || $(window).width() / 2;
+            const initialY = targetY || $(window).height() / 2;
+
+            const elementAtPosition = document.elementFromPoint(initialX, initialY);
+            if (elementAtPosition) {
+                const $elementAtPosition = $(elementAtPosition);
+                const isOverDarkSection = $elementAtPosition.closest('[data-bg-color="dark"], .on-dark-bg').length > 0;
+
+                if (isOverDarkSection) {
+                    cursor.addClass("dark-bg");
+                } else {
+                    cursor.removeClass("dark-bg");
+                }
+            }
+        }
+
         $(document).on("mousemove.cursorControl", function (e) {
             targetX = e.clientX;
             targetY = e.clientY;
@@ -18,6 +35,7 @@ jQuery(document).ready(function () {
             if (isFirstMove && targetX !== 0 && targetY !== 0) {
                 cursor.fadeIn();
                 isFirstMove = false;
+                setTimeout(checkInitialCursorPosition, 10);
             }
         });
 
@@ -100,6 +118,25 @@ jQuery(document).ready(function () {
         if (isLargeScreen || !touchEvents || !isDevice) {
             enableCursorInteractions();
             isFirstMove = true;
+
+            // Check initial position on page load
+            setTimeout(function () {
+                const centerX = $(window).width() / 2;
+                const centerY = $(window).height() / 2;
+                const elementAtCenter = document.elementFromPoint(centerX, centerY);
+
+                if (elementAtCenter) {
+                    const $elementAtCenter = $(elementAtCenter);
+                    const isOverDarkSection =
+                        $elementAtCenter.closest('[data-bg-color="dark"], .on-dark-bg').length > 0;
+
+                    if (isOverDarkSection) {
+                        cursor.addClass("dark-bg");
+                    } else {
+                        cursor.removeClass("dark-bg");
+                    }
+                }
+            }, 100);
         } else {
             disableCursorInteractions();
         }
@@ -130,12 +167,8 @@ jQuery(document).ready(function () {
         $this.find(".project-scroll").each(function () {
             const projectScroll = $(this);
             const counterText = projectScroll.siblings(".counter-text");
-            const typeTabLinks = projectScroll
-                .closest(".container")
-                .find(".tab-links.type");
-            const viewTabLinks = projectScroll
-                .closest(".tab-container")
-                .find(".tab-links.view-toggle");
+            const typeTabLinks = projectScroll.closest(".container").find(".tab-links.type");
+            const viewTabLinks = projectScroll.closest(".tab-container").find(".tab-links.view-toggle");
 
             if (counterText.length) {
                 const scrollItems = projectScroll.find(".project-scroll-item");
@@ -152,9 +185,7 @@ jQuery(document).ready(function () {
                 let isUserScrolling = false;
 
                 function isCurrentTabActive() {
-                    return projectScroll
-                        .closest(".tab-content")
-                        .hasClass("active");
+                    return projectScroll.closest(".tab-content").hasClass("active");
                 }
 
                 function startAutoScrollTimer() {
@@ -163,33 +194,22 @@ jQuery(document).ready(function () {
                     }
 
                     autoScrollTimer = setTimeout(function () {
-                        const nextIndex =
-                            currentItemIndex < scrollItems.length
-                                ? currentItemIndex + 1
-                                : 1;
+                        const nextIndex = currentItemIndex < scrollItems.length ? currentItemIndex + 1 : 1;
                         const nextItem = scrollItems.eq(nextIndex - 1);
 
                         if (nextItem.length) {
                             let scrollTop = 0;
                             for (let i = 0; i < nextItem.index(); i++) {
-                                scrollTop += scrollItems
-                                    .eq(i)
-                                    .outerHeight(true);
+                                scrollTop += scrollItems.eq(i).outerHeight(true);
                             }
 
                             //disable scroll snap on project-scroll-item
-                            $(".project-scroll-item").css(
-                                "scroll-snap-align",
-                                "none"
-                            );
+                            $(".project-scroll-item").css("scroll-snap-align", "none");
                             projectScroll.css("scroll-snap-type", "none");
                             projectScroll.css("scroll-behavior", "auto");
 
                             setTimeout(function () {
-                                console.log(
-                                    "Starting animation to scrollTop:",
-                                    scrollTop
-                                );
+                                console.log("Starting animation to scrollTop:", scrollTop);
                                 projectScroll.animate(
                                     {
                                         scrollTop: scrollTop,
@@ -200,18 +220,9 @@ jQuery(document).ready(function () {
                                         console.log("Animation completed");
 
                                         setTimeout(function () {
-                                            $(".project-scroll-item").css(
-                                                "scroll-snap-align",
-                                                "start"
-                                            );
-                                            projectScroll.css(
-                                                "scroll-snap-type",
-                                                "y mandatory"
-                                            );
-                                            projectScroll.css(
-                                                "scroll-behavior",
-                                                "smooth"
-                                            );
+                                            $(".project-scroll-item").css("scroll-snap-align", "start");
+                                            projectScroll.css("scroll-snap-type", "y mandatory");
+                                            projectScroll.css("scroll-behavior", "smooth");
                                         }, 200);
                                     }
                                 );
@@ -279,8 +290,7 @@ jQuery(document).ready(function () {
                         $(this),
                         (entry) => {
                             const currentItem = $(entry.target);
-                            const itemIndex =
-                                scrollItems.index(currentItem) + 1;
+                            const itemIndex = scrollItems.index(currentItem) + 1;
 
                             // Only update if index actually changed
                             if (itemIndex !== currentItemIndex) {
@@ -424,18 +434,9 @@ jQuery(document).ready(function ($) {
                             console.log("Timeline animation completed");
 
                             setTimeout(function () {
-                                $(cardSelector).css(
-                                    "scroll-snap-align",
-                                    "center"
-                                );
-                                $timelineSection.css(
-                                    "scroll-snap-type",
-                                    "y mandatory"
-                                );
-                                $timelineSection.css(
-                                    "scroll-behavior",
-                                    "smooth"
-                                );
+                                $(cardSelector).css("scroll-snap-align", "center");
+                                $timelineSection.css("scroll-snap-type", "y mandatory");
+                                $timelineSection.css("scroll-behavior", "smooth");
                             }, 50);
                         }
                     );
@@ -463,6 +464,191 @@ jQuery(document).ready(function ($) {
             window.scrollTo({
                 top: nextSection.offset().top,
                 behavior: "smooth",
+            });
+        }
+    });
+});
+
+/*::* THUMBS SWIPER *::*/
+jQuery(document).ready(function ($) {
+    $(".thumbs-slide").each(function () {
+        const $this = $(this);
+        const topSwiper = $this.find(".swiper.top")[0];
+        const thumbsSwiper = $this.find(".swiper.thumbs")[0];
+
+        const slideAutoplay = $this.hasClass("autoplay");
+        const slidePause = $this.hasClass("pause");
+        const autoplayInterval = $this.data("autoplay-interval");
+
+        const slideButtonNext =
+            $this.find(".thumbs-slide-swiper-button-next")[0] ||
+            $this.parent().find(".thumbs-slide-swiper-button-next")[0] ||
+            $(".thumbs-slide-swiper-button-next")[0];
+        const slideButtonPrev =
+            $this.find(".thumbs-slide-swiper-button-prev")[0] ||
+            $this.parent().find(".thumbs-slide-swiper-button-prev")[0] ||
+            $(".thumbs-slide-swiper-button-prev")[0];
+
+        var galleryThumbs = new Swiper(thumbsSwiper, {
+            centeredSlides: true,
+            slidesPerView: "auto",
+            speed: 1000,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            slideToClickedSlide: true,
+            on: {
+                init: function () {
+                    const activeVideos = $this.find(".swiper.thumbs .swiper-slide-active video[autoplay]");
+                    activeVideos.each(function () {
+                        this.pause();
+                    });
+                },
+                slideChangeTransitionStart: function () {
+                    // Sync top swiper when thumbs are swiped
+                    if (galleryTop.realIndex !== galleryThumbs.realIndex) {
+                        galleryTop.slideTo(galleryThumbs.realIndex);
+                    }
+                },
+            },
+        });
+
+        var galleryTop = new Swiper(topSwiper, {
+            slidesPerView: 1,
+            effect: "slide",
+            speed: 1000,
+            centeredSlides: true,
+            slideToClickedSlide: true,
+            centerInsufficientSlides: true,
+            navigation: {
+                nextEl: slideButtonNext,
+                prevEl: slideButtonPrev,
+            },
+            autoplay: {
+                delay: autoplayInterval || 4000,
+                disableOnInteraction: false,
+            },
+            thumbs: {
+                swiper: galleryThumbs,
+            },
+            on: {
+                slideChangeTransitionStart: function () {
+                    const activeVideos = $this.find(".swiper.top .swiper-slide-active video[autoplay]");
+                    activeVideos.each(function () {
+                        try {
+                            this.currentTime = 0;
+                            const playPromise = this.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch((error) => {
+                                    if (error.name !== "AbortError") {
+                                        console.error("Video playback error:", error);
+                                    }
+                                });
+                            }
+                        } catch (error) {
+                            console.error("Error handling video:", error);
+                        }
+                    });
+
+                    if (galleryThumbs.realIndex !== galleryTop.realIndex) {
+                        galleryThumbs.slideTo(galleryTop.realIndex);
+                    }
+                },
+                slideChangeTransitionEnd: function () {
+                    const inactiveVideos = $this.find(".swiper.top .swiper-slide:not(.swiper-slide-active) video");
+                    inactiveVideos.each(function () {
+                        try {
+                            this.pause();
+                            this.currentTime = 0;
+                        } catch (error) {
+                            console.error("Error pausing video:", error);
+                        }
+                    });
+                },
+            },
+        });
+
+        function vdoData($this, callback) {
+            const videoSlides = $this.find("video[autoplay]");
+            let loadedCount = 0;
+
+            if (videoSlides.length === 0) {
+                callback();
+                return;
+            }
+
+            videoSlides.each(function () {
+                const vdo = $(this)[0];
+
+                vdo.preload = "metadata";
+
+                vdo.load();
+
+                vdo.onloadedmetadata = function () {
+                    const vdoTime = (vdo.duration - 1) * 1000;
+                    $(vdo).closest(".swiper-slide").attr("data-swiper-autoplay", vdoTime);
+
+                    loadedCount++;
+
+                    if (loadedCount === videoSlides.length) {
+                        callback();
+                    }
+                };
+            });
+        }
+
+        galleryTop.autoplay.stop();
+
+        vdoData($this.find(".swiper.top"), function () {
+            if (slideAutoplay) galleryTop.autoplay.start();
+
+            if (slidePause) {
+                $this
+                    .on("mouseenter", () => galleryTop.autoplay.stop())
+                    .on("mouseleave", () => galleryTop.autoplay.start());
+            }
+        });
+    });
+});
+
+/*::* PROJECT SLIDER MB MEDIA SLIDER*::*/
+jQuery(document).ready(function ($) {
+    const projectSlider = $(".project-slider-item");
+
+    projectSlider.each(function () {
+        const $this = $(this);
+        const slideSwiper = $this.find(".item-media-slider.swiper");
+
+        if (slideSwiper) {
+            const slidePagination = slideSwiper.find(".media-swiper-pagination")[0];
+            const slidePaginationCustom = slideSwiper.find(".media-swiper-pagination").hasClass("custom");
+            const slidePaginationText = slideSwiper.find(".media-swiper-pagination").data("text");
+
+            const slideButtonNext = slideSwiper.find(".media-swiper-button-next")[0];
+
+            const slideButtonPrev = slideSwiper.find(".media-swiper-button-prev")[0];
+
+            const swiper = new Swiper(slideSwiper[0], {
+                resistanceRatio: 0,
+                spaceBetween: 0,
+                grabCursor: true,
+                pagination: {
+                    el: slidePagination,
+                    type: slidePaginationCustom ? "custom" : "bullets",
+                    clickable: !slidePaginationCustom,
+                    renderCustom: (swiper, current, total) =>
+                        `<span class="current">${current}</span> / ${total}${
+                            slidePaginationText ? ` ${slidePaginationText}` : ""
+                        }`,
+                },
+                navigation: {
+                    nextEl: slideButtonNext,
+                    prevEl: slideButtonPrev,
+                },
+                effect: "fade",
+                fadeEffect: { crossFade: true },
+                speed: 1000,
+                slidesPerView: "auto",
+                watchSlidesProgress: true,
             });
         }
     });

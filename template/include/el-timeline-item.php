@@ -1,4 +1,8 @@
-<div class="timeline-item" id="<?php echo $item['title'] ?>">
+<?php
+$item_id = trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($item['title'])), '-');
+?>
+
+<div class="timeline-item" id="<?php echo $item_id ?>">
     <span class="marker-circle"></span>
 
     <?php

@@ -1,8 +1,10 @@
-<footer id="footer">
+<footer id="footer" class="<?php if ($page == 'not-found.php') {
+                                echo 'hidden';
+                            } ?>">
     <div class="footer-nav">
         <div class="footer-address">
             <div class="footer-logo">
-                <a class="brand" href="<?php echo $root; ?>index.php">
+                <a class="brand clickable" href="<?php echo $root; ?>index.php">
                     <img class="logo" src="<?php echo $root; ?>assets/media/design/logo.svg" alt="">
                 </a>
             </div>
@@ -21,16 +23,16 @@
                     <h3 class="size-sub">ARAY</h3>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>about.php">About</a>
+                    <a href="<?php echo $root; ?>about.php" class="clickable">About</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>service.php">Services</a>
+                    <a href="<?php echo $root; ?>service.php" class="clickable">Services</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>workshop.php">Workshop</a>
+                    <a href="<?php echo $root; ?>workshop.php" class="clickable">Workshop</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>contact.php">Contact</a>
+                    <a href="<?php echo $root; ?>contact.php" class="clickable">Contact</a>
                 </li>
             </ul>
 
@@ -39,13 +41,13 @@
                     <h3 class="size-sub">Projects</h3>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>project.php">All Projects</a>
+                    <a href="<?php echo $root; ?>project.php" class="clickable">All Projects</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>project.php">Residential</a>
+                    <a href="<?php echo $root; ?>project.php" class="clickable">Residential</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>project.php">Commercial</a>
+                    <a href="<?php echo $root; ?>project.php" class="clickable">Commercial</a>
                 </li>
             </ul>
 
@@ -54,16 +56,16 @@
                     <h3 class="size-sub">Products</h3>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>product.php">All Products</a>
+                    <a href="<?php echo $root; ?>product.php" class="clickable">All Products</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>product.php">Furniture</a>
+                    <a href="<?php echo $root; ?>product.php" class="clickable">Furniture</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>product.php">Accessories</a>
+                    <a href="<?php echo $root; ?>product.php" class="clickable">Accessories</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>product.php">Lighting</a>
+                    <a href="<?php echo $root; ?>product.php" class="clickable">Lighting</a>
                 </li>
             </ul>
 
@@ -72,28 +74,28 @@
                     <h3 class="size-sub">Terms & Policys</h3>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>terms.php">Privacy Policy</a>
+                    <a href="<?php echo $root; ?>terms.php" class="clickable">Privacy Policy</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>terms.php">Terms and Conditions</a>
+                    <a href="<?php echo $root; ?>terms.php" class="clickable">Terms and Conditions</a>
                 </li>
                 <li>
-                    <a href="<?php echo $root; ?>terms.php">Cookies</a>
+                    <a href="<?php echo $root; ?>terms.php" class="clickable">Cookies</a>
                 </li>
             </ul>
         </div>
 
         <div class="footer-email">
-            <a href="mailto:aray@araybuilds.com" class="uppercase">aray@araybuilds.com</a>
+            <a href="mailto:aray@araybuilds.com" class="uppercase clickable">aray@araybuilds.com</a>
         </div>
         <div class="footer-copy">
             <p>© 2025 ARAY. All rights reserved. Web by ::*</p>
         </div>
         <div class="footer-social">
             <ul class="social">
-                <li><a href="#facebook"><i class="ic ic-facebook"></i></a></li>
-                <li><a href="#instagram"><i class="ic ic-instagram"></i></a></li>
-                <li><a href="#linkedin"><i class="ic ic-linkedin"></i></a></li>
+                <li><a href="#facebook" class="clickable"><i class="ic ic-facebook"></i></a></li>
+                <li><a href="#instagram" class="clickable"><i class="ic ic-instagram"></i></a></li>
+                <li><a href="#linkedin" class="clickable"><i class="ic ic-linkedin"></i></a></li>
             </ul>
         </div>
 
@@ -105,7 +107,7 @@
 
 <?php
 if ($page_index) {
-    // include($root . "include/_wp-code/wp-cookie-law-info-bar.php");
+    include($root . "include/_wp-code/wp-cookie-law-info-bar.php");
 }
 ?>
 

@@ -96,9 +96,7 @@
                                                     <div class="counter-text">
                                                         <p class="size-sub uppercase">
                                                             <span class="c-light-brown">[&nbsp;&nbsp;</span>
-                                                            <span class="current">0</span>/
-                                                            <span class="total">0</span>
-
+                                                            <span class="current">0</span>/<span class="total">0</span>
                                                             <?php echo $type; ?>
                                                             <?php echo $list_item["counter-text"]; ?>
                                                             <span class="c-light-brown">&nbsp;&nbsp;]</span>
@@ -111,7 +109,7 @@
                                                 </div>
 
                                                 <div class="project-slider hidden-device-sm">
-                                                    <div class="swiper auto autoplay" data-autoplay-interval="4000">
+                                                    <div class="swiper auto autoplay" data-autoplay-interval="8000">
                                                         <div class="swiper-wrapper">
                                                             <?php
                                                             foreach ($list_item['items'] as $item) {

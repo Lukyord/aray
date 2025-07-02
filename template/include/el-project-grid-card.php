@@ -1,4 +1,6 @@
-<div class="card animate fadeIn" data-card="project-grid-card">
+<div class="card animate fadeIn clickable" data-card="project-grid-card">
+    <a href="<?php echo $item["link"]; ?>" class="link-overlay"></a>
+
     <div class="card-image">
         <?php
         $section_cover = $item["media"][0]["pc"];
@@ -11,11 +13,11 @@
         <div class="block-content-start">
             <div class="block-header">
                 <div class="block-ttl">
-                    <h3 class="size-h1 uppercase"><?php echo $item["title"]; ?></h3>
+                    <h3 class="size-h2 uppercase"><?php echo $item["title"]; ?></h3>
                 </div>
 
                 <div class="block-subttl">
-                    <p class="block-location size-tagline uppercase c-brown"><?php echo $item["location"]; ?></p>
+                    <p class="size-tagline uppercase c-brown"><?php echo $item["subtitle"]; ?></p>
                     <span class="divider"></span>
                     <p class="block-date size-tagline uppercase c-brown"><?php echo $item["date"]; ?></p>
                 </div>

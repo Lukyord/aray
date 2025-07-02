@@ -65,7 +65,9 @@ $page_index = ($page == basename(dirname($_SERVER['PHP_SELF']), "/") || $page ==
                             } ?>">
         <div class="cursor"></div>
 
-        <header id="header" class="">
+        <header id="header" class="<?php if ($page == 'not-found.php') {
+                                        echo 'hidden';
+                                    } ?>">
             <div class="header-nav">
                 <!-- Logo -->
                 <div class="header-brand clickable">

@@ -1,11 +1,39 @@
 <div class="project-scroll-item">
-    <div class="item-media">
-        <?php
-        $section_cover = $item["media"][0]["pc"];
-        $section_cover_m = $item["media"][0]["mb"];
-        include("include/function-group.php");
-        ?>
-    </div>
+    <?php
+    if (count($item["media"]) > 1) {
+    ?>
+        <div class="item-media-slider swiper auto fade">
+            <div class="swiper-wrapper">
+                <?php
+                foreach ($item["media"] as $media) {
+                ?>
+                    <div class="swiper-slide">
+                        <div class="media <?php if (isset($media["dark-media"])) echo "dark"; ?>">
+                            <?php
+                            $section_cover = $media["pc"];
+                            $section_cover_m = $media["mb"];
+                            include("include/function-group.php");
+                            ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+
+            <div class="swiper-nav">
+                <div class="swiper-button-prev clickable"></div>
+                <div class="swiper-pagination custom"></div>
+                <div class="swiper-button-next clickable"></div>
+            </div>
+        </div>
+    <?php } else { ?>
+        <div class="item-media">
+            <?php
+            $section_cover = $item["media"][0]["pc"];
+            $section_cover_m = $item["media"][0]["mb"];
+            include("include/function-group.php");
+            ?>
+        </div>
+    <?php } ?>
 
     <div class="block-content-start">
         <div class="block-header">
@@ -14,7 +42,7 @@
             </div>
 
             <div class="block-subttl">
-                <p class="block-location size-tagline uppercase c-brown"><?php echo $item["location"]; ?></p>
+                <p class="size-tagline uppercase c-brown"><?php echo $item["subtitle"]; ?></p>
                 <span class="divider"></span>
                 <p class="block-date size-tagline uppercase c-brown"><?php echo $item["date"]; ?></p>
             </div>
@@ -25,7 +53,7 @@
         </div>
 
         <div class="block-cta">
-            <a href="<?php echo $root; ?>project-single.php" class="button">
+            <a href="<?php echo $item["link"]; ?>" class="button">
                 Explore More
             </a>
         </div>

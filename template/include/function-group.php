@@ -12,7 +12,7 @@ if (isset($section_cover) && !empty($section_cover)) {
 
     if ($isImageCover && $isImageCoverM) { ?>
         <picture class="object-fit">
-            <source media="(min-width:992px)" srcset="<?php echo $section_cover; ?>">
+            <source media="(min-width:769px)" srcset="<?php echo $section_cover; ?>">
             <source media="(min-width:0px)" srcset="<?php echo $section_cover_m; ?>">
             <img src="<?php echo $section_cover; ?>" alt="">
         </picture>
@@ -23,7 +23,7 @@ if (isset($section_cover) && !empty($section_cover)) {
         </figure>
     <?php
     } else { ?>
-        <figure class="object-fit show-md">
+        <figure class="object-fit show-sm">
             <?php if ($isVideoCover) { ?>
                 <video playsinline autoplay muted loop src="<?php echo $section_cover; ?>"></video>
             <?php } else { ?>
@@ -31,7 +31,7 @@ if (isset($section_cover) && !empty($section_cover)) {
             <?php } ?>
         </figure>
 
-        <figure class="object-fit hidden-device-md">
+        <figure class="object-fit hidden-device-sm">
             <?php if ($isVideoCoverM) { ?>
                 <video playsinline autoplay muted loop src="<?php echo $section_cover_m; ?>"></video>
             <?php } else { ?>

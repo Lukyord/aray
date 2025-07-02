@@ -1,7 +1,7 @@
 /*WP PLUGIN:COOKIE====================*/
 .cky-consent-container {
-    width: calc(100vw - var(--spacing-3xs) * 2) !important;
-    max-width: calc(100vw - var(--spacing-3xs) * 2) !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
     padding: 0 !important;
     margin: 0 auto !important;
     position: fixed !important;
@@ -9,8 +9,8 @@
     top: auto !important;
     top: auto !important;
     left: auto !important;
-    bottom: var(--spacing-3xs) !important;
-    right: var(--spacing-3xs) !important;
+    bottom: 0 !important;
+    right: 0 !important;
     background: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -22,15 +22,15 @@
     width: 100% !important;
     max-width: 100% !important;
     box-shadow: none !important;
-    border-radius: 15px !important;
+    border-radius: 0 !important;
     border: 0 !important;
-    background: var(--color-blue) !important;
+    background: var(--color-brown) !important;
     color: var(--color-white) !important;
     font-family: var(--font-body) !important;
     font-weight: var(--font-weight-body) !important;
     font-size: var(--font-size-body) !important;
     line-height: var(--line-height-body) !important;
-    padding: var(--spacing-md2) var(--spacing-sm) !important;
+    padding: var(--spacing-md) !important;
     transition: var(--duration) var(--timing-function) !important;
 }
 .cky-consent-container .cky-consent-bar .cky-notice {
@@ -63,7 +63,7 @@
     flex-direction: column !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
-    grid-gap: var(--spacing-sm2) !important;
+    grid-gap: var(--spacing-xl) !important;
 }
 .cky-notice-group > * {
     width: 100% !important;
@@ -96,8 +96,8 @@
     flex-wrap: wrap !important;
     flex-direction: unset !important;
     align-items: center !important;
-    justify-content: center !important;
-    grid-gap: var(--spacing-xs) var(--spacing-2xs) !important;
+    justify-content: flex-start !important;
+    grid-gap: var(--spacing-xs) var(--spacing-lg) !important;
 }
 .cky-notice-btn-wrapper .cky-btn {
     flex: unset !important;
@@ -115,47 +115,49 @@
     width: auto !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    height: var(--button-height) !important;
+    height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
-    padding: var(--button-spacing-y) var(--button-spacing-x) !important;
+    padding: 0 !important;
     color: var(--color-white) !important;
     background: var(--color-blue) !important;
-    border: 1px solid var(--color-white) !important;
-    border-radius: var(--border-radius) !important;
+    border: none !important;
+    border-radius: 0 !important;
     overflow: visible !important;
     font-family: var(--font-body) !important;
-    font-weight: var(--font-weight-body) !important;
-    font-size: var(--font-size-body) !important;
+    font-weight: var(--font-weight-medium) !important;
+    font-size: var(--font-size-button) !important;
     font-style: normal !important;
-    line-height: normal !important;
-    letter-spacing: normal !important;
+    line-height: var(--line-height-button) !important;
+    letter-spacing: var(--letter-spacing-sm) !important;
     text-indent: 0 !important;
     text-transform: uppercase !important;
     opacity: 1 !important;
     transition: var(--duration) var(--timing-function) !important;
     cursor: pointer !important;
 }
-.cky-notice-btn-wrapper .cky-btn:after {
-    font-family: "iconfont";
-    content: "\e94c";
-    font-weight: bold;
-}
+
 .cky-notice-btn-wrapper .cky-btn:hover {
-    color: var(--color-blue) !important;
-    background: var(--color-white) !important;
-    border-color: var(--color-white) !important;
+    color: var(--color-white) !important;
     opacity: 1 !important;
 }
 .cky-notice-btn-wrapper .cky-btn-accept {
     order: 0 !important;
-    flex: auto !important;
-    min-width: calc(50% - var(--spacing-2xs) / 2) !important;
+}
+.cky-notice-btn-wrapper .cky-btn-accept:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: var(--color-light-brown);
+    bottom: calc(-1 * var(--spacing-6xs));
+    left: 0;
+    pointer-events: none;
+    transition: transform var(--duration) var(--timing-function);
 }
 .cky-notice-btn-wrapper .cky-btn-reject {
     order: 1 !important;
-    flex: auto !important;
-    min-width: calc(50% - var(--spacing-2xs) / 2) !important;
+    color: var(--color-light-brown) !important;
 }
 .cky-notice-btn-wrapper .cky-btn-customize {
     order: 2 !important;
@@ -166,6 +168,7 @@
     border-radius: 0 !important;
     background: none !important;
     color: inherit !important;
+    color: var(--color-light-brown) !important;
 }
 .cky-notice-btn-wrapper .cky-btn-customize:hover {
     border: 0 !important;
@@ -175,9 +178,9 @@
 .cky-notice-btn-wrapper .cky-btn-customize:after {
     content: "";
 }
-@media (min-width: 576px) {
+@media (min-width: 768px) {
     .cky-consent-container {
-        width: 400px !important;
+        width: 56rem !important;
     }
 }
 @media (max-width: 440px) {
@@ -185,6 +188,14 @@
     .cky-notice-des,
     .cky-notice-btn-wrapper {
         padding: 0 !important;
+    }
+
+    .cky-notice-group {
+        grid-gap: var(--spacing-lg) !important;
+    }
+
+    .cky-notice-btn-wrapper {
+        grid-gap: var(--spacing-xs) var(--spacing-sm) !important;
     }
 }
 /*WP PLUGIN:WPCF7====================*/

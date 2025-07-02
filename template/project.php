@@ -3,6 +3,8 @@
 <?php include($root . "header.php"); ?>
 
 <main id="main" class="project-main">
+    <h1 class="visually-hidden">Projects</h1>
+
     <?php
     $list_item = [
         "title" => "Our Projects",
@@ -19,7 +21,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "BAAN SINDHORN",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -33,7 +35,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "HG RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -47,7 +49,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "PHETRADA RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -61,7 +63,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "AT RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -75,7 +77,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "APARTMENT BY CHOW",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -89,7 +91,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "At Residence",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -103,7 +105,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "PHETRADA RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -117,7 +119,7 @@
                 "type" => "residential",
                 "link" => $root . "project-single.php",
                 "title" => "At Residence",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -131,7 +133,7 @@
                 "type" => "commercial",
                 "link" => $root . "project-single.php",
                 "title" => "BAAN SINDHORN",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -145,7 +147,7 @@
                 "type" => "commercial",
                 "link" => $root . "project-single.php",
                 "title" => "HG RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -159,7 +161,7 @@
                 "type" => "commercial",
                 "link" => $root . "project-single.php",
                 "title" => "PHETRADA RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -173,7 +175,7 @@
                 "type" => "commercial",
                 "link" => $root . "project-single.php",
                 "title" => "AT RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -187,7 +189,7 @@
                 "type" => "commercial",
                 "link" => $root . "project-single.php",
                 "title" => "BAAN SINDHORN",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
@@ -201,7 +203,7 @@
                 "type" => "commercial",
                 "link" => $root . "project-single.php",
                 "title" => "HG RESIDENCE",
-                "location" => "Bangkok, Thailand",
+                "subtitle" => "Bangkok, Thailand",
                 "date" => "2023-2024",
                 "media" => [
                     [
