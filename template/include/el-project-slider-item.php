@@ -39,7 +39,7 @@
     <div class="block-content-center">
         <div class="block-header">
             <div class="block-ttl">
-                <h3 class="size-h2 uppercase c-brown"><?php echo $item["title"]; ?></h3>
+                <h3 class="size-h2 uppercase c-dark-brown"><?php echo $item["title"]; ?></h3>
             </div>
 
             <div class="block-subttl">

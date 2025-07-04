@@ -13,7 +13,7 @@
         <div class="block-content-start">
             <div class="block-header">
                 <div class="block-ttl">
-                    <h3 class="size-h2 uppercase"><?php echo $item["title"]; ?></h3>
+                    <h3 class="size-h2 uppercase c-dark-brown"><?php echo $item["title"]; ?></h3>
                 </div>
 
                 <div class="block-subttl">

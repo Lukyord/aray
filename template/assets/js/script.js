@@ -183,12 +183,18 @@ jQuery(document).ready(function () {
                 let checkInterval = null;
                 let scrollTimeout = null;
                 let isUserScrolling = false;
+                let isHovering = false;
 
                 function isCurrentTabActive() {
                     return projectScroll.closest(".tab-content").hasClass("active");
                 }
 
                 function startAutoScrollTimer() {
+                    // Don't start timer if hovering over project-scroll-wrapper
+                    if (isHovering) {
+                        return;
+                    }
+
                     if (autoScrollTimer) {
                         clearTimeout(autoScrollTimer);
                     }
@@ -283,6 +289,67 @@ jQuery(document).ready(function () {
 
                 // Listen for scroll events on the project scroll container
                 projectScroll.on("scroll", handleUserScroll);
+
+                // Listen for hover events on project-scroll-wrapper
+                const projectScrollWrapper = projectScroll.closest(".project-scroll-wrapper");
+                if (projectScrollWrapper.length) {
+                    // Check if mouse is currently inside the wrapper
+                    function checkMousePosition(e) {
+                        const rect = projectScrollWrapper[0].getBoundingClientRect();
+                        const wasHovering = isHovering;
+
+                        isHovering =
+                            e.clientX >= rect.left &&
+                            e.clientX <= rect.right &&
+                            e.clientY >= rect.top &&
+                            e.clientY <= rect.bottom;
+
+                        // If hover state changed
+                        if (wasHovering !== isHovering) {
+                            if (isHovering) {
+                                stopAutoScrollTimer();
+                            } else if (isCurrentTabActive() && !isUserScrolling) {
+                                startAutoScrollTimer();
+                            }
+                        }
+                    }
+
+                    // Check initial mouse position and set up mousemove listener
+                    $(document).on("mousemove.projectScroll", checkMousePosition);
+
+                    // Also check on page load/ready
+                    setTimeout(function () {
+                        // Get current mouse position from cursor or use a reasonable default
+                        let mouseX = 0,
+                            mouseY = 0;
+
+                        // Try to get position from cursor element if it exists
+                        const cursor = $(".cursor");
+                        if (cursor.length && cursor.is(":visible")) {
+                            const cursorPos = cursor.position();
+                            if (cursorPos) {
+                                mouseX = cursorPos.left;
+                                mouseY = cursorPos.top;
+                            }
+                        }
+
+                        // Check initial mouse position
+                        const event = { clientX: mouseX, clientY: mouseY };
+                        checkMousePosition(event);
+                    }, 100);
+
+                    projectScrollWrapper.on("mouseenter", function () {
+                        isHovering = true;
+                        stopAutoScrollTimer();
+                    });
+
+                    projectScrollWrapper.on("mouseleave", function () {
+                        isHovering = false;
+                        if (isCurrentTabActive() && !isUserScrolling) {
+                            startAutoScrollTimer();
+                        }
+                    });
+                }
 
                 scrollItems.each(function () {
                     checkIfInView(

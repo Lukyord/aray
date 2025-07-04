@@ -93,7 +93,7 @@
                                                         } ?>
                                                     </div>
 
-                                                    <div class="counter-text">
+                                                    <div class="counter-text c-dark-brown">
                                                         <p class="size-sub uppercase">
                                                             <span class="c-light-brown">[&nbsp;&nbsp;</span>
                                                             <span class="current">0</span>/<span class="total">0</span>

@@ -22,7 +22,7 @@
     <div class="block-content-start">
         <div class="block-header">
             <a class="block-ttl animate fadeIn clickable" href="<?php echo $item["link"]; ?>">
-                <h3 class="size-h2 uppercase c-brown"><?php echo $item["title"]; ?></h3>
+                <h3 class="size-h2 uppercase"><?php echo $item["title"]; ?></h3>
             </a>
 
             <div class="block-subttl animate fadeIn">

@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="block" data-block="4">
-                        <div class="block-content-start gap-sm center-mb">
+                        <div class="block-content-start gap-sm">
                             <div class="block-ttl animate fadeIn">
                                 <h2 class="size-h2 uppercase">Our Mission</h2>
                             </div>

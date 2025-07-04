@@ -4,7 +4,7 @@
             <!-- PC Content -->
             <div class="pc-content show-sm">
                 <div class="markers">
-                    <div class="sc-inner">
+                    <div class="sc-inner sc-inner--precedes">
                         <div class="sc-header">
                             <div class="block-content-start center-mb">
                                 <div class="block-ttl animate fadeIn">

@@ -79,7 +79,7 @@
                             </div>
 
                             <div class="media-caption">
-                                <p>Existing Plan</p>
+                                <p class="c-brown">Existing Plan</p>
                             </div>
                         </div>
 
@@ -93,7 +93,7 @@
                             </div>
 
                             <div class="media-caption animate fadeIn">
-                                <p>Sketch</p>
+                                <p class="c-brown">Sketch</p>
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                                 </div>
 
                                 <div class="media-caption animate fadeIn">
-                                    <p>
+                                    <p class="c-brown">
                                         Wood Craftsmanship
                                     </p>
                                 </div>
@@ -158,7 +158,7 @@
                                 </div>
 
                                 <div class="media-caption animate fadeIn">
-                                    <p>
+                                    <p class="c-brown">
                                         Transitional and Contemporary
                                     </p>
                                 </div>

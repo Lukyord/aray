@@ -4,7 +4,7 @@
 
 <main id="main" class="terms-main">
     <section data-section="terms">
-        <div class="sc-inner sc-inner--follows">
+        <div class="sc-inner sc-inner--follows sc-inner--bottom-extra">
             <div class="container">
                 <div class="tab-container">
                     <div class="sc-ttl animate fadeIn">

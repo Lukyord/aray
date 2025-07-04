@@ -1026,6 +1026,7 @@ jQuery(document).ready(function ($) {
     $("[data-view='grid']").click(function () {
         var $this = $(this);
         $this.closest("section").removeClass("project-view");
+        $this.closest("section").addClass("grid-view");
         $("#header").removeClass("collapse-menu");
 
         // Update both URL and localStorage
@@ -1035,6 +1036,7 @@ jQuery(document).ready(function ($) {
     $("[data-view='project']").click(function () {
         var $this = $(this);
         $this.closest("section").addClass("project-view");
+        $this.closest("section").removeClass("grid-view");
         $("#header").addClass("collapse-menu");
 
         // Update both URL and localStorage
@@ -1048,8 +1050,10 @@ jQuery(document).ready(function ($) {
 
             if (projectViewActive) {
                 $this.closest("section").addClass("project-view");
+                $this.closest("section").removeClass("grid-view");
                 $("#header").addClass("collapse-menu");
             } else {
+                $this.closest("section").addClass("grid-view");
                 $this.closest("section").removeClass("project-view");
                 $("#header").removeClass("collapse-menu");
             }
