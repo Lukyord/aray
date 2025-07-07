@@ -3288,7 +3288,7 @@ main > h1.visually-hidden + section {
 
 /* List Item Template */
 [data-section="list-item-template"].grid-view .sc-inner {
-    padding-bottom: calc(var(--gap-section) * 2);
+    padding-bottom: calc(var(--gap-section) * 1.5);
 }
 
 [data-section="list-item-template"].project-view {
@@ -3336,7 +3336,11 @@ html.no-touchevents [data-section="list-item-template"] .tab-links a:hover,
     flex-shrink: 0;
 }
 
-[data-section="list-item-template"] .tab-links.type:not(:has(.view-toggle)) {
+[data-section="list-item-template"] .tab-links.type {
+    margin-bottom: var(--spacing-xl);
+}
+
+[data-section="list-item-template"] .tab-links.type:has(+ .tab-contents:has(.view-toggle)) {
     margin-bottom: var(--spacing-md);
 }
 

@@ -51,7 +51,7 @@
                             <ul class="social animate fadeIn">
                                 <li><a href="#facebook"><i class="ic ic-facebook"></i></a></li>
                                 <li><a href="#instagram"><i class="ic ic-instagram"></i></a></li>
-                                <li><a href="#linkedin"><i class="ic ic-linkedin"></i></a></li>
+                                <li><a href="#linkedin"><i class="ic ic-linkedin-filled"></i></a></li>
                             </ul>
                         </div>
                     </div>

@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-linkedin-filled:before {
+    content: "\e959";
+}
 .ic-angle-wide-right:before {
     content: "\e977";
 }

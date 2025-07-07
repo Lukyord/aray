@@ -52,10 +52,15 @@
         transform: none !important;
     }
 
+    /* PAGE: PROJECT SINGLE */
+    .project-single-main [data-section="content-template-4"] .sc-inner {
+        padding-bottom: var(--spacing-5xl);
+    }
+
     /* PAGE ====================*/
     /* PAGE: INDEX */
     .index-main [data-section="list-item-template"] .sc-inner {
-        padding-bottom: calc(var(--gap-section) * 2);
+        padding-bottom: calc(var(--gap-section) * 1.5);
     }
 
     /* PAGE: TERMS */
@@ -70,6 +75,12 @@
         flex-direction: column;
         grid-gap: var(--spacing-5xs);
         transform: none !important;
+    }
+
+    /* PAGE: CONTACT */
+    /* Contact */
+    [data-section="contact"] .sc-inner {
+        padding-top: var(--spacing-2sm);
     }
 }
 
@@ -361,6 +372,7 @@
     /* List Item Template */
     *:is(.project-main, .product-main) [data-section="list-item-template"] .sc-inner {
         padding-top: 0;
+        padding-bottom: var(--gap-section);
     }
 
     [data-section="list-item-template"] .sc-ttl {
@@ -413,7 +425,7 @@
     }
 
     [data-section="list-item-template"] .project-slider-item {
-        padding-bottom: var(--spacing-4xl);
+        padding-bottom: calc(var(--spacing-4xl) + var(--spacing-sm));
     }
 
     [data-section="list-item-template"] .project-slider-item .item-media-slider {
@@ -642,6 +654,10 @@
         opacity: 1;
     }
 
+    .workshop-main .timeline-slide-content .entry-content {
+        text-align: center;
+    }
+
     .timeline-slide-content .entry-content {
         margin-bottom: var(--spacing-md);
     }
@@ -737,6 +753,7 @@
 
     /* Related Items */
     [data-section="related-items"] .sc-inner {
+        padding-top: var(--gap-section);
         padding-bottom: var(--gap-section);
     }
 
@@ -839,6 +856,10 @@
     }
 
     /* Content Template 3 */
+    [data-section="content-template-3"] .sc-inner {
+        padding-bottom: var(--gap-section);
+    }
+
     [data-section="content-template-3"] [class*="block-content-"] {
         margin-bottom: var(--spacing-lg);
     }
@@ -860,6 +881,7 @@
     /* Content Template 4 */
     [data-section="content-template-4"] .sc-inner {
         padding-top: var(--gap-section);
+        padding-bottom: var(--spacing-3lg);
     }
 
     [data-section="content-template-4"] .content {
@@ -1050,6 +1072,11 @@
 
     /* PAGE: TERMS */
     /* Terms */
+    [data-section="terms"] .sc-inner {
+        padding-top: 0;
+        padding-bottom: var(--gap-section);
+    }
+
     [data-section="terms"] .tab-container {
         display: flex;
         flex-direction: column;

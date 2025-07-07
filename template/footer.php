@@ -95,7 +95,7 @@
             <ul class="social">
                 <li><a href="#facebook" class="clickable"><i class="ic ic-facebook"></i></a></li>
                 <li><a href="#instagram" class="clickable"><i class="ic ic-instagram"></i></a></li>
-                <li><a href="#linkedin" class="clickable"><i class="ic ic-linkedin"></i></a></li>
+                <li><a href="#linkedin" class="clickable"><i class="ic ic-linkedin-filled"></i></a></li>
             </ul>
         </div>
 

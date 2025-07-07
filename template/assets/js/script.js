@@ -153,6 +153,12 @@ $.easing.easeOutQuadCustom = function (x) {
 jQuery(document).ready(function () {
     $("[data-section='list-item-template']").each(function () {
         const $this = $(this);
+        const projectScroll = $this.find(".project-scroll");
+
+        if (!projectScroll.length) {
+            return;
+        }
+
         const container = $this.find(".container");
         const tabContents = container.find(".view-toggle + .tab-contents");
         const contentOffset = tabContents.offset().top - $this.offset().top;

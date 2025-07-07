@@ -1,5 +1,5 @@
 <section data-section="related-items">
-    <div class="sc-inner sc-inner--bottom-extra">
+    <div class="sc-inner sc-inner--bottom-extra sc-inner--top-extra">
         <div class="container">
             <div class="sc-header justify-between">
                 <h2 class="sc-ttl size-h1">
