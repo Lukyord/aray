@@ -12,6 +12,8 @@
         //     "link" => $root . "projects.php",
         //     "text" => "View All Projects"
         // ],
+        "current-type" => "all",
+        "category-url" => $root . "project.php",
         "counter-text" => "Projects",
         "enable-view-toggle" => "true",
         "all-filter" => "true",
@@ -216,7 +218,7 @@
         ]
     ];
 
-    include("include/sc-list-item-template.php");
+    include("include/sc-list-item-template-change-url.php");
     ?>
 </main>
 

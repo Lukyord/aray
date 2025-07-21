@@ -8,6 +8,8 @@
     <?php
     $list_item = [
         "title" => "Products",
+        "current-type" => "all",
+        "category-url" => $root . "product.php",
         "counter-text" => "Products",
         "enable-view-toggle" => "true",
         "all-filter" => "true",
@@ -182,7 +184,7 @@
         ]
     ];
 
-    include("include/sc-list-item-template.php");
+    include("include/sc-list-item-template-change-url.php");
     ?>
 </main>
 
