@@ -1150,8 +1150,10 @@ jQuery(document).ready(function ($) {
         if (targetView) {
             if (targetView === "project") {
                 $("[data-view='project']").click();
+                return;
             } else if (targetView === "grid") {
                 $("[data-view='grid']").click();
+                return;
             }
         }
 
